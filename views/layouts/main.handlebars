@@ -9,10 +9,123 @@
 </head>
 <body>
 
+<audio id="musica" src="{{caminho_da_musica}}"></audio>
 
-  {{{body}}}
+<img src="" alt="">
+    {{!-- Cube Construction --}}
+
+    <div class="container">
+        <div class="box" id="box">
+            <div class="cube" id="cube" onclick="movement(), notmovement(), movPath()"></div>
+        </div>
+    </div>
+
+  {{!-- Panel Construction --}}
+
+
+    <div class="panel" id="panel">
+
+        <h4 class="h1Panel" id="h1Panel">Escolha um cor:</h4>
+
+        <div class="colors"></div>
+            <input id="green" type="button" value="GREEN" onclick="chooseColorGreen()"> 
+            <input id="blue" type="button" value="BLUE" onclick="chooseColorBlue()"> 
+            <input id="yellow" type="button" value="YELLOW" onclick="chooseColorYellow()">
+             
+            <div class="name"><div>
+    
+                <div id="h2wel">
+
+                        {{!-- Controls --}}
+                        <div class="control">
+                            <h1 class="h1Control" id="h1Contro1">⇦</h1>
+                            <div>
+                                <h1 class="h1Contro1t" id="h1Contro1t">⇩</h1>
+                                <h1 class="h1Contro1o">⇧</h1>
+                            </div>
+                            <h1 class="h1Contro1r" id="h1Contro1r">⇨</h1>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="language">
+                    <h4 class="h4Language" id="h4Language">Escolha o idioma:</h4>
+
+                    <div class="optLanguage">
+                        <h5 class="h5_1" id="h5_1" onclick="translationPort()">PORT</h5>
+                        <h5 class="h5_2" id="h5_2" onclick="translationIng()">ENG</h5>
+                    </div>
+                </div>
+
+
+            
+            <button type="submit" class="h2Init" id="h2Init" onclick="start()" onmouseover="colors()" onmouseout="colorsout()">INICIAR</button>    
+
+            <br>
+            <br>
+            <h6 id="h6_f11">*Pressione f11 para melhor experiência</h6>
+
+        </div>
+
+        </div> 
+
+
+
+    {{!-- All content --}}
+    <div id="path">
+
+
+        <h2 id="tips">
+            
+
+                <div id="tips0">
+                    ⚠️ Atenção  <br>
+                    Movimentação através das teclas em desenvolvimento 
+                    <br>
+                    <br>
+                    Movimentação apenas com o botão direito do mouse
+                    <br>
+                    <br>
+                    Utilize o fone de ouvido para melhor experiência ;D
+                </div>
+
+                <div id="resDiv">
+                    
+                    <input type="text" id="input" placeholder="Faça sua pergunta aqui">
+                    <button onclick="print()" id="btnAi"><h1 id="h1BtnAi">↵</h1></button>
+                    <h1 id="Ia"></h1>
+                    <h1 id="res"></h1>
+
+                </div>
+
+        </h2>
+
+        
+                <div id="visitorDiv">
+
+                    <div id="visitorAll">
+
+
+
+                        {{#each visitor}}
+                            <div id="visitorUnit">
+                            <h5> nome: <br><br><h5 id="nomeVisitor">{{name}}</h5></h5>
+                            <br>
+                            <h5>Comentário: <br><br><h5 id="descripVisitor">{{description}}</h5></h5>
+                            </div>
+                        {{/each}}
+                    </div>
+
+                </div>
+
+    </div>
 
     <script src="index.js"></script>
     <script src="translation.js"></script>
+    <script src="ai.js"></script>
+
 </body>
 </html>
+

@@ -5,6 +5,9 @@ const port = 3030
 const Visitor = require('./models/Visitor')
 const bodyParser = require('body-parser')
 const handlebars = require('express-handlebars')
+const sound = require('play-sound')()
+const path = require('path')
+
 
 
 //templates
@@ -29,17 +32,23 @@ app.use(bodyParser.json())
 // routes
 app.get('/', (req, res) => {
 
+    const audioFile = path.join('C:/Users/Vinicius/Desktop/Pastas/Projetos/Épico-Portfólio/templates/music/undertale.mp3')
+
     Visitor.find().lean().then((visitor) => {
-    res.render(__dirname + '/views/layouts/register', {visitor:visitor})
+
+    res.render(__dirname + '/views/layouts/main', {visitor:visitor})
 
     })
 })
 
-app.post('/visitor', (req, res) => {
+app.post('/', (req, res) => {
+    
 
     var err = []
 
     if(!req.body.name|| req.body.name == null || req.body.name == null) {
+        err.push({text: 'Digite alguma coisa'})
+    }if(!req.body.description|| req.body.description == null || req.body.description == null) {
         err.push({text: 'Digite alguma coisa'})
     }
     
@@ -52,19 +61,15 @@ app.post('/visitor', (req, res) => {
 
     newVisitor.save().then(() => {
         console.log('Visita salvo com sucesso')
-        res.redirect('/start')
+        res.redirect('/', )
     }).catch((err) => {
         console.log('Não salvo', err)
     })
 })
 
-app.get('/start', (req, res) => {
-    
-    res.render(__dirname + '/views/layouts/start')
-})
 
-// database and port conection 
-mongoose.connect('mongodb+srv://Vinicius:alinevini@cluster0.qhzoffv.mongodb.net/?retryWrites=true&w=majority')
+
+mongoose.connect('mongodb+srv://Vinicius:alinevini@cluster0.qhzoffv.mongodb.net/test')
 .then (() => {
     app.listen(port, ()=> {
         console.log('Server running')

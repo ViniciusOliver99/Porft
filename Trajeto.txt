@@ -8,4 +8,4 @@ depois todos os projetos em cards -
 
 inteligengia artificial -
 
-feedback em cards
+feedback em cards -
